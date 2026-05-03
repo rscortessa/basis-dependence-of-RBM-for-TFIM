@@ -53,8 +53,8 @@ def main():
     Psi0_WF[np.abs(Psi0_WF)<eps]=0.0
     Psi1_WF[np.abs(Psi1_WF)<eps]=0.0
 
-    Psi0_WF = Psi0_WF * ( np.sign(Psi0_WF[0]) + (1-np.sign(Psi0_WF[0])) * (1+np.sign(Psi0_WF[0])) ) * np.sign(Psi0_WF[1]) )
-    Psi1_WF = Psi1_WF * ( np.sign(Psi1_WF[0]) + (1-np.sign(Psi1_WF[0])) * (1+np.sign(Psi1_WF[0])) ) * np.sign(Psi1_WF[1]) )
+    Psi0_WF = Psi0_WF * ( np.sign(Psi0_WF[0]) + (1-np.sign(Psi0_WF[0])) * (1+np.sign(Psi0_WF[0])) ) * np.sign(Psi0_WF[1]) 
+    Psi1_WF = Psi1_WF * ( np.sign(Psi1_WF[0]) + (1-np.sign(Psi1_WF[0])) * (1+np.sign(Psi1_WF[0])) ) * np.sign(Psi1_WF[1]) 
 
     if psiplus:
         Psiplus_WF= (Psi0_WF+Psi1_WF)/np.sqrt(2)
@@ -68,7 +68,7 @@ def main():
     working_dir, study_name, storage = setup_workspace(params,optuna_args,NN_params, params["ROOT_DIR"], params["model"])
             
     # 4. Load the Optuna study
-
+    print(storage)
     study = optuna.load_study(study_name=study_name, storage=storage)
     study = optuna.load_study(study_name=optuna.get_all_study_names(storage=storage)[0], storage=storage)
     n_trials_done = len(study.trials)
@@ -122,6 +122,6 @@ def main():
     plt.ylim([10**(-10),1])
     plt.legend()
     plt.savefig(f"square_amplitudes_g{params["g"]}L{params["L"]}angle{params["angle"]}.pdf")
-    plt.show()
+
 if __name__ == "__main__":
     main()

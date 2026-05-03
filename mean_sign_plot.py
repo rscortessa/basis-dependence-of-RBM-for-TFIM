@@ -124,6 +124,6 @@ def main():
     plt.xticks(angles,label_angles)
     plt.legend()
     plt.savefig(f"mean_sign_g{params["g"]}L{params["L"]}.pdf")
-    plt.show()
+
 if __name__ == "__main__":
     main()

@@ -9,7 +9,7 @@ NN=(0.5 1.0 2.0 3.0)
 reports=5
 trials=100
 
-for nn in "${NN[@]}$"; do
+for nn in "${NN[@]}"; do
     for g in "${g_s[@]}"; do
 	for angle in "${angles[@]}"; do
 	    python study.py --L "$L" --g "$g" --angle "$angle" --architecture "$architecture" --NN "$nn" --trials "$trials" &
